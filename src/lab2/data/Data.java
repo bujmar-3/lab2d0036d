@@ -5,6 +5,7 @@ import java.net.*;
 
 
 public class Data extends Observable {
+	private Vector<City> Cities;
 	public Data(){
 		
 		int timeLimit = ;
