@@ -7,6 +7,14 @@ import java.net.*;
 public class Data extends Observable {
 	public Data(){
 		
+		int timeLimit = ;
+		if City.time <= timeLimit{
+			return City.getTemp();
+		}else
+		{
+			
+		}
+		
 	}
 	/**
 	 * getData, gets the information needed from the yr.no API
