@@ -1,31 +1,59 @@
 package lab2.view;
+import javax.swing.*;
+
 import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.JOptionPane;
+
+import java.awt.event.*;
+import javax.swing.*;
+
 
 public class Ginp extends JFrame{
-	private JTextField Item1;
-	private JTextField Item2;
-	private JTextField Item3;
+	private JComboBox boxlocation;
+	private JComboBox boxtime;
+	private static String[] location = {"stockholm", "Skelleftea" , "Kage"}; 
+	private static String[] hours = {"00:00", "01:00", "02:00", "fuck me", "03:00", "04:00", "05:00"};
+	private String test = "fuckm me dead";
 	
-	
-	
-	
-	
-	
-	public Ginp() {
-		super("Weather app");
+	public Ginp(){
+		super("the title");
 		setLayout(new FlowLayout());
 		
-		Item1 = new JTextField("Enter city here", 10);
-		add(Item1);
+			boxtime = new JComboBox(hours);
+		boxtime.addItemListener(
+				new ItemListener(){
+					public void itemStateChanged(ItemEvent event){
+						String string = ""
+						if(event.getStateChange()==ItemEvent.SELECTED)
+							string=.string.format	/** få in xml svar */
+					}
+				}
+				
+				
+				
+				
+		);
 		
-		Item2 = new JTextField("Enter hour here", 5);
-		add(Item2);
+		
+		boxlocation = new JComboBox(location);
+		boxlocation.addItemListener(
+				new ItemListener(){
+					public void itemStateChanged(ItemEvent event){
+						String string = ""
+						if(event.getStateChange()==ItemEvent.SELECTED)
+							string=.string.format	/** få in xml svar */
+					}
+				}
+				
+				
+		); 
+		
+		
+		
+	
+	
+	
+	
+
 		
 		
 		
