@@ -11,5 +11,17 @@ public class City {
 		this.lon = lon;
 		this.msl = msl;
 	}
+	public double getLat(){
+		return this.lat;
+	}
+	public double getLon(){
+		return this.lon;
+	}
+	public double getMsl(){
+		return this.msl;
+	}
+	public double getTime(){
+		return this.time;
+	}
 
 }
