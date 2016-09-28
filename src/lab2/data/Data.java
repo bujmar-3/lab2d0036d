@@ -7,7 +7,9 @@ import javax.xml.parsers.*;
 
 import java.io.*;
 import java.net.*;
+import java.util.Calendar;
 import java.util.Date;
+import javax.xml.bind.DatatypeConverter;
 
 
 public class Data extends Observable {
@@ -63,8 +65,8 @@ public class Data extends Observable {
 				Element t = (Element) timeList.item(i);
 				String from = t.getAttribute("from");
 				String to = t.getAttribute("to");
-				double timeFrom = strToDouble(from);
-				double timeTo = strToDouble(to);
+				/*Här ska vi ta ut tider och se till att rätt data hämtas. Vet dock inte hur vi översätter från XML dateTime till något användbart*/
+				Calendar checkTime = parseDateTime(to);
 				/*Kolla om det är tiden vi söker*/
 				if(time>timeFrom & time<timeTo){
 					t.getAttributeNode("")
@@ -72,7 +74,7 @@ public class Data extends Observable {
 			}
 		
 	}
-	private double strToDouble(String str){
+	private int parseString(String str){
 		
 	}
 
