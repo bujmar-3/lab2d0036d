@@ -9,5 +9,6 @@ public class Main {
 	public static void main(String[] args){
 		Data model = new Data();
 		model.getCurrentTime();
+		model.getLoc("Kage");
 }
 }

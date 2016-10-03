@@ -55,7 +55,7 @@ public class Data {
 	}
 	
 	public String[] getLoc(String place){
-		String[] locArray = new String[2];
+		String[] locArray = new String[3];
 		try{
 			DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dbuilder = dbfactory.newDocumentBuilder();
@@ -76,13 +76,14 @@ public class Data {
 						locArray[0] = alt;
 						locArray[1] = lat;
 						locArray[2] = lon;
+						System.out.println("Alt:" + alt + " Lat:" + lat +  " Lon:" + lon);
 						return locArray;
 					}
 				}
 			}
 			
 		}catch(Exception e){
-			System.out.println("Error in getLoc");
+			System.out.println(e);
 		}
 		return locArray;
 	}
