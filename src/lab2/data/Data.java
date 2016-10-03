@@ -52,13 +52,37 @@ public class Data {
 		return url;
 	}
 	
-	pulic Array getLoc(String place){
-		String[] locArray;
+	public String[] getLoc(String place){
+		String[] locArray = new String[2];
 		try{
 			DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
-		}catch(Exception e){
+			DocumentBuilder dbuilder = dbfactory.newDocumentBuilder();
+			File xmlFile = new File("C:/Users/MarZ/Downloads/places.xml");
+			Document dplaces = dbuilder.parse(xmlFile);
+			NodeList localityList = dplaces.getElementsByTagName("locality");
+			NodeList locationList = dplaces.getElementsByTagName("location");
+			for(int i = 0; i < localityList.getLength(); i++){
+				Node localityNode = localityList.item(i);
+				Node locationNode = locationList.item(i);
+				if(localityNode.getNodeType() == Node.ELEMENT_NODE){
+					Element localityElement = (Element) localityNode;
+					Element locationElement = (Element) locationNode;
+					if(place.equals(localityElement.getAttribute("name"))){
+						String alt = locationElement.getAttribute("altitude");
+						String lat = locationElement.getAttribute("latitude");
+						String lon = locationElement.getAttribute("longitude");
+						locArray[0] = alt;
+						locArray[1] = lat;
+						locArray[2] = lon;
+						return locArray;
+					}
+				}
+			}
 			
+		}catch(Exception e){
+			System.out.println("Error in getLoc");
 		}
+		return locArray;
 	}
 	
 		
