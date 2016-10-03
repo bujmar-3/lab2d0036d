@@ -20,14 +20,16 @@ public class Data {
 	public String getTemp(String url, String time){
 		String temprature = "none";
 		try{
+		URL url1 = new URL(url);
 		DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dbuilder = dbfactory.newDocumentBuilder();
-		Document xmlDoc = dbuilder.parse(url);
+		Document xmlDoc = dbuilder.parse(url1.openStream());
 		NodeList timeList = xmlDoc.getElementsByTagName("time");
-		NodeList tempList = xmlDoc.getElementsByTagName("temprature");
+		NodeList tempList = xmlDoc.getElementsByTagName("temperature");
 		for(int i = 0; i < timeList.getLength(); i++){
 			Node tempNode = tempList.item(i);
 			Node timeNode = timeList.item(i);
+			/*Hämtar fel tempratur pga att time förekommer fler gånger än temp*/
 			if(tempNode.getNodeType() == Node.ELEMENT_NODE){
 				Element tempElement = (Element) tempNode;
 				Element timeElement = (Element) timeNode;
@@ -35,12 +37,13 @@ public class Data {
 				String timeToAttribute = timeElement.getAttribute("to");
 				if(time.equals(timeFromAttribute) && time.equals(timeToAttribute)){
 					temprature = tempElement.getAttribute("value");
+					System.out.println("Temprature:" + temprature);
 					return temprature;
 				}
 			}
 		}
 	}catch(Exception e){
-		System.out.println("Error in getTemp");
+		System.out.println(e);
 	}
 		return temprature;
 	}
