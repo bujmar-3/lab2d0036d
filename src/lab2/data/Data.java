@@ -5,6 +5,8 @@ import javax.xml.parsers.*;
 
 import java.io.*;
 import java.net.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.xml.bind.DatatypeConverter;
@@ -83,6 +85,13 @@ public class Data {
 			System.out.println("Error in getLoc");
 		}
 		return locArray;
+	}
+	
+	public String getCurrentTime(){
+		DateFormat df = new SimpleDateFormat("dd/MM/yy'T'HH:mm:ss'Z'");
+		Calendar calobj = Calendar.getInstance();
+		System.out.println(df.format(calobj.getTime()));
+		return df.format(calobj.getTime());
 	}
 	
 		
