@@ -19,6 +19,7 @@ public class Data {
 
 	public String getTemp(String url, String time){
 		String temprature = "none";
+		int j = -5;
 		try{
 		URL url1 = new URL(url);
 		DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
@@ -27,9 +28,9 @@ public class Data {
 		NodeList timeList = xmlDoc.getElementsByTagName("time");
 		NodeList tempList = xmlDoc.getElementsByTagName("temperature");
 		for(int i = 0; i < timeList.getLength(); i++){
+			j = j + 5;
 			Node tempNode = tempList.item(i);
-			Node timeNode = timeList.item(i);
-			/*Hämtar fel tempratur pga att time förekommer fler gånger än temp*/
+			Node timeNode = timeList.item(j);
 			if(tempNode.getNodeType() == Node.ELEMENT_NODE){
 				Element tempElement = (Element) tempNode;
 				Element timeElement = (Element) timeNode;
